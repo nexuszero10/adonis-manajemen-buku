@@ -1,0 +1,146 @@
+@layout.app({ title: "Halaman Tambah Buku" })
+
+  @slot('meta')
+    <meta name="description" content="Halaman Tambah Buku" />
+  @endslot
+  
+  @slot('content')
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0">
+              <i class="bi bi-plus-circle me-2"></i>Tambah Buku Baru
+            </h5>
+          </div>
+          <div class="card-body">
+            <form method="POST" action="{{ route('books.store') }}">
+              {{ csrfField() }}
+              {{-- Title --}}
+              <div class="mb-3">
+                <label for="title" class="form-label">Judul Buku <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  class="form-control {{ flashMessages.get('errors')?.find(e => e.field === 'title') ? 'is-invalid' : '' }}"
+                  id="title"
+                  name="title"
+                  placeholder="Masukkan judul buku"
+                  value="{{ flashMessages.get('old.title', '') }}"
+                  required
+                />
+                @if(flashMessages.get('errors')?.find(e => e.field === 'title'))
+                  <div class="invalid-feedback">
+                    {{ flashMessages.get('errors').find(e => e.field === 'title').message }}
+                  </div>
+                @endif
+              </div>
+
+              {{-- Author --}}
+              <div class="mb-3">
+                <label for="author" class="form-label">Penulis <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  class="form-control {{ flashMessages.get('errors')?.find(e => e.field === 'author') ? 'is-invalid' : '' }}"
+                  id="author"
+                  name="author"
+                  placeholder="Masukkan nama penulis"
+                  value="{{ flashMessages.get('old.author', '') }}"
+                  required
+                />
+                @if(flashMessages.get('errors')?.find(e => e.field === 'author'))
+                  <div class="invalid-feedback">
+                    {{ flashMessages.get('errors').find(e => e.field === 'author').message }}
+                  </div>
+                @endif
+              </div>
+
+              {{-- Tahun Terbit --}}
+              <div class="mb-3">
+                <label for="publishedYear" class="form-label">Tahun Terbit <span class="text-danger">*</span></label>
+                <input
+                  type="number"
+                  class="form-control {{ flashMessages.get('errors')?.find(e => e.field === 'publishedYear') ? 'is-invalid' : '' }}"
+                  id="publishedYear"
+                  name="publishedYear"
+                  placeholder="Contoh: 2022"
+                  value="{{ flashMessages.get('old.publishedYear', '') }}"
+                  required
+                />
+                @if(flashMessages.get('errors')?.find(e => e.field === 'publishedYear'))
+                  <div class="invalid-feedback">
+                    {{ flashMessages.get('errors').find(e => e.field === 'publishedYear').message }}
+                  </div>
+                @endif
+              </div>
+
+              {{-- Kategori --}}
+              <div class="mb-3">
+                <label for="categoryId" class="form-label">Kategori <span class="text-danger">*</span></label>
+                <select
+                  id="categoryId"
+                  name="categoryId"
+                  class="form-select {{ flashMessages.get('errors')?.find(e => e.field === 'categoryId') ? 'is-invalid' : '' }}"
+                  required
+                >
+                  <option value="">
+                    -- Pilih Kategori --
+                  </option>
+                  @each(category in categories)
+                    <option
+                      value="{{ category.id }}"
+                      {{ flashMessages.get('old.categoryId') == category.id ? 'selected' : '' }}
+                    >
+                      {{ category.name }}
+                    </option>
+                  @endeach
+                </select>
+                @if(flashMessages.get('errors')?.find(e => e.field === 'categoryId'))
+                  <div class="invalid-feedback">
+                    {{ flashMessages.get('errors').find(e => e.field === 'categoryId').message }}
+                  </div>
+                @endif
+              </div>
+
+              {{-- Rak --}}
+              <div class="mb-3">
+                <label for="shelfId" class="form-label">
+                  Rak Penyimpanan <span class="text-danger">*</span>
+                </label>
+                <select
+                  id="shelfId"
+                  name="shelfId"
+                  class="form-select {{ flashMessages.get('errors')?.find(e => e.field === 'shelfId') ? 'is-invalid' : '' }}"
+                  required
+                >
+                  <option value="">
+                    -- Pilih Rak --
+                  </option>
+                  @each(shelf in shelves)
+                    <option value="{{ shelf.id }}" {{ flashMessages.get('old.shelfId') == shelf.id ? 'selected' : '' }}>
+                      {{ shelf.code }} - {{ shelf.location }}
+                    </option>
+                  @endeach
+                </select>
+                @if(flashMessages.get('errors')?.find(e => e.field === 'shelfId'))
+                  <div class="invalid-feedback">
+                    {{ flashMessages.get('errors').find(e => e.field === 'shelfId').message }}
+                  </div>
+                @endif
+              </div>
+
+              {{-- Tombol Aksi --}}
+              <div class="d-grid gap-2 d-md-flex justify-content-md-between mt-3">
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-check-circle me-1"></i>Simpan Buku
+            </button>
+                <a href="{{ route('books.index') }}" class="btn btn-secondary">
+                  <i class="bi bi-arrow-left me-1"></i>Kembali
+            </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  @endslot
+@end

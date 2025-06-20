@@ -1,0 +1,108 @@
+@layout.app({ title: "Halaman Edit Buku" })
+
+  @slot('meta')
+    <meta name="description" content="Halaman Edit Buku" />
+  @endslot
+  
+  @slot('content')
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0">
+              <i class="bi bi-pencil-square me-2"></i>Edit Buku
+            </h5>
+          </div>
+          <div class="card-body">
+            <form method="POST" action="{{ route('books.update', [book.id]) }}">
+              {{ csrfField() }}
+              <div class="mb-3">
+                <label for="title" class="form-label">Judul Buku <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ book.title }}" required />
+                @if(flashMessages.has('errors.title'))
+                  <div class="invalid-feedback">
+                    {{ flashMessages.get('errors.title') }}
+                  </div>
+                @endif
+              </div>
+
+              <div class="mb-3">
+                <label for="author" class="form-label">Pengarang <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="author" name="author" value="{{ book.author }}" required />
+                @if(flashMessages.has('errors.author'))
+                  <div class="invalid-feedback">
+                    {{ flashMessages.get('errors.author') }}
+                  </div>
+                @endif
+              </div>
+
+              <div class="mb-3">
+                <label for="publishedYear" class="form-label">Tahun Terbit <span class="text-danger">*</span></label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="publishedYear"
+                  name="publishedYear"
+                  value="{{ book.publishedYear }}"
+                  required
+                />
+                @if(flashMessages.has('errors.publishedYear'))
+                  <div class="invalid-feedback">
+                    {{ flashMessages.get('errors.publishedYear') }}
+                  </div>
+                @endif
+              </div>
+
+              <div class="mb-3">
+                <label for="categoryId" class="form-label">Kategori <span class="text-danger">*</span></label>
+                <select class="form-select" id="categoryId" name="categoryId" required>
+                  @each(category in categories)
+                    <option value="{{ category.id }}" {{ category.id === book.categoryId ? 'selected' : '' }}>
+                      {{ category.name }}
+                    </option>
+                  @endeach
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="shelfId" class="form-label">Rak <span class="text-danger">*</span></label>
+                <select class="form-select" id="shelfId" name="shelfId" required>
+                  @each(shelf in shelves)
+                    <option value="{{ shelf.id }}" {{ shelf.id === book.shelfId ? 'selected' : '' }}>
+                      {{ shelf.code }} - {{ shelf.location }}
+                    </option>
+                  @endeach
+                </select>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card bg-light">
+                    <div class="card-body">
+                      <h6 class="card-title">
+                        <i class="bi bi-info-circle me-1"></i>Informasi Data
+                      </h6>
+                      <small class="text-muted">
+                        <strong>Dibuat:</strong>{{ book.createdAt.toFormat('dd/MM/yyyy HH:mm') }}<br />
+                        <strong>Diperbarui:</strong>{{ book.updatedAt.toFormat('dd/MM/yyyy HH:mm') }}
+                  </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-grid gap-2 d-md-flex justify-content-md-between mt-3">
+                <button type="submit" class="btn btn-primary">
+                  <i class="bi bi-check-circle me-1"></i>Perbarui Buku
+            </button>
+                <a href="{{ route('books.index') }}" class="btn btn-secondary">
+                  <i class="bi bi-arrow-left me-1"></i>Kembali
+            </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  @endslot
+@end

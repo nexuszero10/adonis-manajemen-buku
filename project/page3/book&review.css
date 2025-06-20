@@ -1,0 +1,332 @@
+html, body {
+    margin: 0;
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #222831;
+    color: #ffffff;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+#container {
+    width: 100%;
+}
+
+.page {
+    font-size: 30px;
+    font-style: italic;
+    color: #ffd700;
+    text-align: center;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #222831;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 100px;
+}
+
+#title h1 {
+    font-size: 50px;
+    margin-left: 20px;
+    font-size: 40px;
+    color: #ffd700;
+    letter-spacing: 7.5px;
+    word-spacing: 10px;
+}
+
+#title img {
+    max-width: 150px;
+    height: auto;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin-left: 10px;
+    gap: 10px;
+    padding: 0;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+nav ul li {
+    cursor: pointer;
+}
+
+nav li {
+    font-size: 25px;
+    background-color: #393E46;
+    color: #ffd700;
+    padding: 10px 15px;
+    border-radius: 30px;
+}
+
+nav li {
+    font-size: 20px;
+    background-color: #393E46;
+    color: #ffd700;
+    padding: 10px 15px;
+    border-radius: 30px;
+}
+
+#bookingInvoice {
+    display: flex;
+    justify-content: space-between;
+    background-color: #393E46;
+    padding: 10px;
+    border-radius: 50px;
+    max-width: 60%;
+    margin: auto;
+}
+
+#bookingForm {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    gap: 10px;
+    padding: 10px 20px;
+}
+
+#bookingForm h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 0;
+}
+
+#bookingForm input,
+#bookingForm select,
+#bookingForm button {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    font-size: 15px;
+}
+
+.rowseat {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-content: flex-start;
+}
+
+.filmKategori {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+#kategori, #film {
+    flex: 1;
+}
+
+#row, #seat {
+    flex: 1;
+}
+
+#denah {
+    flex: 0.5;
+}
+
+#buttonList {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    padding: 5px;
+    max-width: 75%;
+    gap: 50px;
+}
+
+#buttonList button {
+    font-size: 25px;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+#bookingForm button {
+    background-color: #ffd700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: auto;
+}
+
+#bookingForm button:hover {
+    background-color: #ffd700;
+}
+
+#tiket {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 50px;
+    display: none;
+}
+
+#tiketContainer p {
+    margin: 5px 0; 
+    text-align: center;
+}
+
+#tiketContainer {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid yellow;
+    border-radius: 30px;
+    padding: 10px 35px ;
+    gap: 5px;
+    font-size: 20px;
+}
+
+#tiket section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    gap: 20px; 
+    margin: 5px 0; 
+}
+
+a {
+    color: #FFDB00;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#denahDuduk {
+    display: flex;
+    flex-direction: column;
+    background-color: #393E46;
+    padding: 15px 25px;
+    gap: 20px;
+    width: 45%;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 40px;
+}
+
+#denahDuduk * {
+    max-width: 100%; 
+    box-sizing: border-box;
+}
+
+#layar {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFDB00;
+    padding: 5px;
+    width: 90%;
+    margin: auto;
+    height: 10vh;
+    align-items: center;
+    border-radius: 0px 0px 15px 15px;
+}
+
+#layar p {
+    text-align: center;
+    color: black;
+    letter-spacing: 5px;
+    font-size: 20px;
+}
+
+#tempatDuduk {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    padding: 5px;
+    justify-content: center;
+    width: 100%;
+}
+
+.seat {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 0px 17.5px;
+}
+
+.seat p {
+    color: #222831;
+    font-weight: bolder;
+}
+
+
+.splitter {
+    margin: 0px 10;
+    background-color:#393E46 ;
+}
+
+.splitter p {
+    color: #393E46;
+}
+
+#footer {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#footer ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    align-items: center;
+}
+
+#footer h1 {
+    font-size: 30px;
+    margin-top: 0;
+    letter-spacing: 5px;
+    color: #ffd700;
+}
+
+#footer img {
+    max-width: 150px;
+}
+
+#footer p {
+    margin-top: 0;
+}
+
+#footer ul li {
+    margin: 0 10px;
+}
+
+#footer ul li img {
+    max-width: 30px;
+}

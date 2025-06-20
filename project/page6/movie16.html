@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie - Suzume No Tojimari</title>
+    <link rel="icon" href="../aset/logo.png">
+    <link rel="stylesheet" href="movieStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <div id="title">
+                <a href="/page1/beranda.html"><img src="/aset/logo.png" alt="logoAthena"></a>
+                <h1>BIOSKOP ATHENA</h1>
+            </div>
+            <nav>
+                <ul>
+                    <a href="/page2/movieList.html">
+                        <li>Movies</li>
+                    </a>
+                    <a href="/page3/book&review.html">
+                        <li>Ticketing</li>
+                    </a>
+                    <a href="/page4/news&evet.html">
+                        <li>News</li>
+                    </a>
+                    <a href="/page5/aboutus.html">
+                        <li>About Us</li>
+                    </a>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="containerMovie">
+            <div id="posterFilm">
+                <img src="/aset/agaklaen.jpg" alt="posterSuzume">
+
+                <div id="reviewFilm" style="display: none;">
+                    <form name="reviewFilm" id="reviewForm">
+                        <div id="namaRate">
+                            <input type="text" id="inputUser" name="inputUser" placeholder="Masukkan nama" required>
+                            <input type="number" placeholder="Masukkan rating" id="rating" required>
+                        </div>
+                        <textarea name="komentar" id="komentar" placeholder="komentar film" required></textarea>
+                        <button type="button" onclick="generateReview()">Publish</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="infoFilm">
+                <h1 id="yellow">Agak Laen</h1>
+                <table>
+                    <tr>
+                        <td>Class</td>
+                        <td>:</td>
+                        <td>Indonesian</td>
+                    </tr>
+                    <tr>
+                        <td>Direktor</td>
+                        <td>:</td>
+                        <td>MuhadKly Acho</td>
+                    </tr>
+                    <tr>
+                        <td>Duration</td>
+                        <td>:</td>
+                        <td>119 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Genre</td>
+                        <td>:</td>
+                        <td>Comedy, Horror</td>
+                    </tr>
+                    <tr>
+                        <td>Cast</td>
+                        <td>:</td>
+                        <td>Oki Rengga, Boris Bokir, Indra Jegel, Tissa Biani</td>
+                    </tr>
+                </table>
+                <h1>Synopsis: </h1>
+                <p> An old man dies in a failing haunted house ride. The operators bury his body on site, turning it
+                    into a popular attraction.
+                </p>
+                <div id="listButton">
+                    <a href="https://www.youtube.com/watch?v=0YLSPyGA4h0"><button>WatchTrailer</button></a>
+                    <button onclick="formReview()">Tulis Review</button>
+                </div>
+                <div id="listReview"></div>
+            </div>
+        </div>
+        <footer>
+            <div id="footer">
+                <img src="../aset/logo.png" alt="logo">
+                <h1>BIOSKOP ATHENA</h1>
+                <ul>
+                    <li><a href="https://www.instagram.com/tansaaah.10"><img src="../aset/instagram-removebg-preview.png"alt=""></a></li>
+                    <li><img src="../aset/gmailLogo-removebg-preview.png" alt=""></li>
+                    <li><img src="../aset/Youtube_logo.png" alt=""></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+    <script src="movieScript..js"></script>
+</body>
+
+</html>

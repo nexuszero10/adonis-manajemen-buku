@@ -1,0 +1,177 @@
+a {
+    color: #FFDB00;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+html, body {
+    margin: 0;
+    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #222831;
+    color: #ffffff;
+    font-family: "Roboto";
+}
+
+#container {
+    width: 100%;
+}
+
+.page {
+    font-size: 30px;
+    font-style: italic;
+    color: #ffd700;
+    text-align: center;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #222831;
+}
+
+#title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 100px;
+}
+
+#title h1 {
+    font-size: 50px;
+    margin-left: 20px;
+    font-size: 40px;
+    color: #ffd700;
+    letter-spacing: 7.5px;
+    word-spacing: 10px;
+}
+
+#title img {
+    max-width: 150px;
+    height: auto;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin-left: 10px;
+    gap: 10px;
+    padding: 0;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+nav ul li {
+    cursor: pointer;
+}
+
+nav li {
+    font-size: 25px;
+    background-color: #393E46;
+    color: #ffd700;
+    padding: 10px 15px;
+    border-radius: 30px;
+}
+
+nav li {
+    font-size: 20px;
+    background-color: #393E46;
+    color: #ffd700;
+    padding: 10px 15px;
+    border-radius: 30px;
+}
+
+#aboutus {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    margin: auto;
+    border-radius: 30px;
+    padding: 10px;
+    margin-top: 30pxs;
+}
+
+#profile p{
+    margin-top: 0;
+    padding: 10px;
+    line-height: 2;
+    font-size: 20px;
+    text-align: justify;
+}
+
+#contact {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    border-radius: 30px;
+    align-items: center;  
+    justify-content: center;  
+}
+
+#contact p {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10px;
+    padding: 5px 15px;
+    background-color: #393E46;
+    border-radius: 50px;
+}
+
+#listKontak {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    gap: 20px;
+    justify-content: center; 
+}
+
+.listItem {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 15px;
+    justify-content: center;
+    text-align: center;
+    align-items: center; 
+    border-radius: 30px;
+
+}
+
+.listItem h6 {
+    font-size: 20px;
+    text-align: left;
+    margin: 0; 
+}
+
+#contact img {
+    max-width: 40px;
+    max-height: 50px;
+    height: auto;
+    padding: 10px;
+}
+
+#footer {
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+
+#footer img {
+    max-width: 150px;
+}

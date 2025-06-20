@@ -1,0 +1,81 @@
+@layout.app({ title: "Form Peminjaman Buku" })
+
+  @slot('content')
+    <div class="max-w-xl mx-auto bg-white p-4 p-md-5 rounded shadow space-y-4">
+      <h2 class="text-2xl fw-bold text-dark">
+        📚 Form Peminjaman Buku
+      </h2>
+
+      @if(flashMessages.has('notification'))
+        <div class="alert alert-success">
+          {{ flashMessages.get('notification').message }}
+        </div>
+      @endif
+      
+      <form method="POST" action="{{ route('loans.store', { bookId: book.id }) }}">
+        {{ csrfField() }}
+        {{-- Judul Buku --}}
+        <div class="mb-3">
+          <label class="form-label">Judul Buku</label>
+          <input type="text" class="form-control bg-light" value="{{ book.title }}" disabled />
+        </div>
+
+        {{-- Pengarang --}}
+        <div class="mb-3">
+          <label class="form-label">Pengarang</label>
+          <input type="text" class="form-control bg-light" value="{{ book.author }}" disabled />
+        </div>
+
+        {{-- Tahun Terbit --}}
+        <div class="mb-3">
+          <label class="form-label">Tahun Terbit</label>
+          <input type="text" class="form-control bg-light" value="{{ book.publishedYear }}" disabled />
+        </div>
+
+        {{-- Tanggal Pinjam --}}
+        <div class="mb-3">
+          <label class="form-label">Tanggal Pinjam</label>
+          <input
+            type="date"
+            name="loan_date"
+            class="form-control {{ flashMessages.has('errors.loan_date') ? 'is-invalid' : '' }}"
+            min="{{ minDate }}"
+            value="{{ flashMessages.get('old.loan_date', defaultLoanDate) }}"
+            required
+          />
+
+          @if(flashMessages.has('errors.loan_date'))
+            <div class="invalid-feedback">
+              {{ flashMessages.get('errors.loan_date') }}
+            </div>
+          @endif
+        </div>
+
+        {{-- Tanggal Kembali --}}
+        <div class="mb-3">
+          <label class="form-label">Tanggal Kembali</label>
+          <input
+            type="date"
+            name="return_date"
+            class="form-control {{ flashMessages.has('errors.return_date') ? 'is-invalid' : '' }}"
+            min="{{ minReturnDate }}"
+            value="{{ flashMessages.get('old.return_date', defaultReturnDate) }}"
+            required
+          />
+          @if(flashMessages.has('errors.return_date'))
+            <div class="invalid-feedback">
+              {{ flashMessages.get('errors.return_date') }}
+            </div>
+          @endif
+        </div>
+
+        {{-- Tombol Submit --}}
+        <div class="d-flex justify-content-end">
+          <button type="submit" class="btn btn-warning">
+            📥 Simpan Peminjaman
+      </button>
+        </div>
+      </form>
+    </div>
+  @endslot
+@end

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - Bioskop Athena</title>
+    <link rel="stylesheet" href="beranda.css">
+    <link rel="icon" href="../aset/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <div id="title">
+                <a href="../page1/beranda.html"><img src="../aset/logo.png" alt="logoAthena"></a>
+                <h1>BIOSKOP ATHENA</h1>
+            </div>
+            <nav>
+                <ul>
+                    <a href="../page2/movieList.html">
+                        <li>Movies</li>
+                    </a>
+                    <a href="../page3/book&review.html">
+                        <li>Ticketing</li>
+                    </a>
+                    <a href="../page4/news&evet.html">
+                        <li>News</li>
+                    </a>
+                    <a href="../page5/aboutus.html">
+                        <li>About Us</li>
+                    </a>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="sliderContainer">
+            <button class="arrow prev" onclick="prevSlide()">&#10094;</button>
+            <div id="slider">
+                <div class="slide">
+                    <img src="../aset/haikyuuuSlide.jpg" alt="posterHaikyuuu">
+                    <br>
+                    <h2>Haikyu!! The Dumpster Battle</h2>
+                </div>
+                <div class="slide">
+                    <img src="../aset/despicableme4.jpg" alt="posterDespiclabeme4">
+                    <br>
+                    <h2>Despicable Me 4</h2>
+                </div>
+                <div class="slide">
+                    <img src="../aset/kingdomapes.jpg" alt="posterApes">
+                    <br>
+                    <h2>Kingdom of the Planet of the Apes</h2>
+                </div>
+                <div class="slide">
+                    <img src="../aset/posterArtikel.jpg" alt="posterWonderland">
+                    <br>
+                    <h2>Wonderland</h2>
+                </div>
+            </div>
+            <button class="arrow next" onclick="nextSlide()">&#10095;</button>
+        </div>
+        <!-- <footer>
+                <div id="footer">
+                    <img src="../aset/logo.png" alt="logo">
+                </div>
+            </footer> -->
+    </div>
+    <script src="beranda.js"></script>
+</body>
+
+</html>

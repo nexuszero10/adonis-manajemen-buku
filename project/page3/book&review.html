@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book & Revie - Bioskop Athena</title>
+    <link rel="stylesheet" href="book&review.css">
+    <link rel="icon" href="/aset/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <div id="title">
+                <a href="../page1/beranda.html"><img src="/aset/logo.png" alt="logoAthena"></a>
+                <h1>BIOSKOP ATHENA</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../page2/movieList.html">Movies</a></li>
+                    <li><a href="../page3/book&review.html">Ticketing</a></li>
+                    <li><a href="../page4/news&evet.html">News</a></li>
+                    <li><a href="../page5/aboutus.html">About Us</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="bookingInvoice">
+            <form name="bookingFilm" id="bookingForm">
+                <h2>Form Booking Athena</h2>
+                <input type="text" name="inputNama" id="nama" placeholder="Masukkan nama Anda" required>
+                <div class="filmKategori">
+                    <select name="inputKategori" id="kategori" onchange="kategoriFilm()" required>
+                        <option value="" disabled selected>Pilih Kategori Film</option>
+                        <option value="Animasi Jepang">Animasi Jepang</option>
+                        <option value="Film Internasional">Film Internasional</option>
+                        <option value="Film Lokal">Film Lokal</option>
+                    </select>
+                    <select name="inputFilm" id="film" required>
+                        <option value="" disabled selected>Pilih Judul Film</option>
+                    </select>
+                </div>
+                <div class="rowseat">
+                    <select name="inputRow" id="row" required >
+                        <option value="" disabled selected>Pilih baris tempat duduk</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                    <select name="inputSeat" id="seat" required>
+                        <option value="" disabled selected>Pilih nomor tempat duduk</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                    <button id="denah" type="button" onclick="cekDenah()">Cek Bangku</button>
+                </div>
+                <input type="date" id="date" required>
+                <input type="time" id="time" required>
+                <div id="buttonList">
+                    <button type="button" onclick="generateInvoice()">Cetak Tiket</button>
+                </div>
+            </form>
+
+            <div id="tiket" style="display:none;">
+                <div id="tiketContainer">
+                    <p>BIOSKOP ATHENA</p>
+                    <p id="judulTiket">JUDUL FILM DARI FORM</p>
+                    <p id="dateTiket">DATE: </p>
+                    <p id="timeTiket">TIME: </p>
+                    <section>
+                        <p id="rowTiket">ROW: </p>
+                        <p id="seatTiket">SEAT: </p>
+                    </section>
+                    <p id="priceTiket">PRICE: </p>
+                    <p id="kodePesanan"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="denahDuduk" style="display: none;">
+            <div id="layar">
+                <p>POSISI LAYAR</p>
+            </div>
+
+            <div id="tempatDuduk">
+                <div class="row" id="A">
+                    <div class="seat 1">
+                        <p>A1</p>
+                    </div>
+
+                    <div class="seat 2">
+                        <p>A2</p>
+                    </div>
+
+                    <div class="seat 3">
+                        <p>A3</p>
+                    </div>
+
+                    <div class="seat splitter">
+                        <p>A</p>
+                    </div>
+
+                    <div class="seat 4">
+                        <p>A4</p>
+                    </div>
+
+                    <div class="seat 5">
+                        <p>A5</p>
+                    </div>
+
+                    <div class="seat 6">
+                        <p>A6</p>
+                    </div>
+                </div>
+
+                <div class="row" id="B">
+                    <div class="seat 1">
+                        <p>B1</p>
+                    </div>
+
+                    <div class="seat 2">
+                        <p>B2</p>
+                    </div>
+
+                    <div class="seat 3">
+                        <p>B3</p>
+                    </div>
+
+                    <div class="seat splitter">
+                        <p>B</p>
+                    </div>
+
+                    <div class="seat 4">
+                        <p>B4</p>
+                    </div>
+
+                    <div class="seat 5">
+                        <p>B5</p>
+                    </div>
+
+                    <div class="seat 6">
+                        <p>B6</p>
+                    </div>
+                </div>
+
+                <div class="row" id="G">
+                    <div class="seat 1">
+                        <p>C1</p>
+                    </div>
+
+                    <div class="seat 2">
+                        <p>C2</p>
+                    </div>
+
+                    <div class="seat 3">
+                        <p>C3</p>
+                    </div>
+
+                    <div class="seat splitter">
+                        <p>A</p>
+                    </div>
+
+                    <div class="seat 4">
+                        <p>C4</p>
+                    </div>
+
+                    <div class="seat 5">
+                        <p>C5</p>
+                    </div>
+
+                    <div class="seat 6">
+                        <p>C6</p>
+                    </div>
+                </div>
+
+                <div class="row" id="D">
+                    <div class="seat 1">
+                        <p>D1</p>
+                    </div>
+
+                    <div class="seat 2">
+                        <p>D2</p>
+                    </div>
+
+                    <div class="seat 3">
+                        <p>D3</p>
+                    </div>
+
+                    <div class="seat splitter">
+                        <p>D</p>
+                    </div>
+
+                    <div class="seat 4">
+                        <p>D4</p>
+                    </div>
+
+                    <div class="seat 5">
+                        <p>D5</p>
+                    </div>
+
+                    <div class="seat 6">
+                        <p>D6</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <footer>
+            <div id="footer">
+                <img src="../aset/logo.png" alt="logo">
+                <h1>BIOSKOP ATHENA</h1>
+                <ul>
+                    <li><a href="https://www.instagram.com/tansaaah.10"><img src="../aset/instagram-removebg-preview.png"alt=""></a></li>
+                    <li><img src="../aset/gmailLogo-removebg-preview.png" alt=""></li>
+                    <li><img src="../aset/Youtube_logo.png" alt=""></li>
+                </ul>
+            </div>
+        </footer> 
+    </div>
+    <script src="book&review.js"></script>
+</body>
+
+</html>
