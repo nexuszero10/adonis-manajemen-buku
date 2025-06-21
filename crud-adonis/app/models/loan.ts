@@ -1,8 +1,7 @@
-// app/models/loan.ts
 import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import Book from './book.js'
-import User from './user.js' // jika kamu ganti nama ke 'Member', sesuaikan di sini
+import User from './user.js'
 import { DateTime } from 'luxon'
 
 export default class Loan extends BaseModel {
@@ -16,10 +15,10 @@ export default class Loan extends BaseModel {
   declare bookId: number
 
   @column.date()
-  declare loanDate: Date
+  declare loanDate: DateTime
 
   @column.date()
-  declare returnDate: Date | null
+  declare returnDate: DateTime | null
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

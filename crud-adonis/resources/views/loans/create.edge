@@ -6,9 +6,17 @@
         📚 Form Peminjaman Buku
       </h2>
 
+      {{-- Notifikasi sukses --}}
       @if(flashMessages.has('notification'))
         <div class="alert alert-success">
           {{ flashMessages.get('notification').message }}
+        </div>
+      @endif
+      
+      {{-- Pesan error umum --}}
+      @if(flashMessages.has('errors.general'))
+        <div class="alert alert-danger">
+          {{ flashMessages.get('errors.general') }}
         </div>
       @endif
       
@@ -26,12 +34,6 @@
           <input type="text" class="form-control bg-light" value="{{ book.author }}" disabled />
         </div>
 
-        {{-- Tahun Terbit --}}
-        <div class="mb-3">
-          <label class="form-label">Tahun Terbit</label>
-          <input type="text" class="form-control bg-light" value="{{ book.publishedYear }}" disabled />
-        </div>
-
         {{-- Tanggal Pinjam --}}
         <div class="mb-3">
           <label class="form-label">Tanggal Pinjam</label>
@@ -43,7 +45,6 @@
             value="{{ flashMessages.get('old.loan_date', defaultLoanDate) }}"
             required
           />
-
           @if(flashMessages.has('errors.loan_date'))
             <div class="invalid-feedback">
               {{ flashMessages.get('errors.loan_date') }}
@@ -73,7 +74,7 @@
         <div class="d-flex justify-content-end">
           <button type="submit" class="btn btn-warning">
             📥 Simpan Peminjaman
-      </button>
+          </button>
         </div>
       </form>
     </div>

@@ -1,0 +1,83 @@
+@layout.app({ title: "Edit Peminjaman Buku" })
+
+  @slot('content')
+    <div class="max-w-xl mx-auto bg-white p-4 rounded shadow">
+      <h2 class="text-2xl mb-4 fw-bold text-dark">
+        ✏️ Edit Peminjaman Buku
+      </h2>
+
+      <form method="POST" action="{{ route('loans.update', { id: loan.id }) }}">
+        {{ csrfField() }}
+        {{-- Pilih Buku --}}
+        <div class="mb-3">
+          <label class="form-label">Buku</label>
+          <select
+            name="book_id"
+            class="form-select {{ flashMessages.has('errors.book_id') ? 'is-invalid' : '' }}"
+            required
+          >
+            <option value="">
+              -- Pilih Buku --
+            </option>
+            @each(book in books)
+              <option value="{{ book.id }}" {{ loan.bookId === book.id ? 'selected' : '' }}>
+                {{ book.title }}
+              </option>
+            @endeach
+          </select>
+          @if(flashMessages.has('errors.book_id'))
+            <div class="invalid-feedback">
+              {{ flashMessages.get('errors.book_id') }}
+            </div>
+          @endif
+        </div>
+
+        {{-- Tanggal Pinjam --}}
+        <div class="mb-3">
+          <label class="form-label">Tanggal Pinjam</label>
+          <input
+            type="date"
+            name="loan_date"
+            class="form-control {{ flashMessages.has('errors.loan_date') ? 'is-invalid' : '' }}"
+            value="{{ flashMessages.get('old.loan_date', loan.loanDate.toISODate()) }}"
+            min="{{ minDate }}"
+            required
+          />
+          @if(flashMessages.has('errors.loan_date'))
+            <div class="invalid-feedback">
+              {{ flashMessages.get('errors.loan_date') }}
+            </div>
+          @endif
+        </div>
+
+        {{-- Tanggal Kembali --}}
+        <div class="mb-3">
+          <label class="form-label">Tanggal Kembali</label>
+          <input
+            type="date"
+            name="return_date"
+            class="form-control {{ flashMessages.has('errors.return_date') ? 'is-invalid' : '' }}"
+            value="{{ flashMessages.get('old.return_date', loan.returnDate?.toISODate()) }}"
+            min="{{ minReturnDate }}"
+            required
+          />
+          @if(flashMessages.has('errors.return_date'))
+            <div class="invalid-feedback">
+              {{ flashMessages.get('errors.return_date') }}
+            </div>
+          @endif
+        </div>
+
+        {{-- Tombol --}}
+        <div class="d-flex justify-content-between">
+          <a href="{{ route('loans.index') }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i>Batal
+        </a>
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i>Simpan Perubahan
+        </button>
+        </div>
+      </form>
+    </div>
+  @endslot
+@end

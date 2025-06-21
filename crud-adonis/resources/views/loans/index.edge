@@ -1,0 +1,84 @@
+@layout.app({ title: "Daftar Buku Dipinjam" })
+
+@slot('content')
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">
+            <i class="bi bi-book-half me-2"></i>Buku yang Dipinjam
+          </h5>
+
+          {{-- Tombol Edit Profil --}}
+          <a href="{{ route('users.edit') }}" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-person-circle me-1"></i>Edit Profil
+          </a>
+        </div>
+
+        <div class="card-body">
+          {{-- Form Pencarian --}}
+          <form action="{{ route('loans.index') }}" method="GET" class="mb-3 row">
+            <div class="col-md-4">
+              <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Cari judul buku..."
+                value="{{ search }}"
+              />
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-outline-primary">Cari</button>
+              @if(search !== '')
+                <a href="{{ route('loans.index') }}" class="btn btn-outline-danger">Reset</a>
+              @endif
+            </div>
+          </form>
+
+          {{-- Tabel Pinjaman --}}
+          @if(loans.length === 0)
+            <div class="alert alert-info">
+              Tidak ada buku yang sedang dipinjam.
+            </div>
+          @else
+            <div class="table-responsive">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Judul Buku</th>
+                    <th>Pengarang</th>
+                    <th>Tanggal Pinjam</th>
+                    <th>Tanggal Kembali</th>
+                    <th>Edit Pinjaman</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @each((loan, index) in loans)
+                    <tr>
+                      <td>{{ index + 1 }}</td>
+                      <td><strong>{{ loan.book.title }}</strong></td>
+                      <td>{{ loan.book.author }}</td>
+                      <td>{{ loan.loanDate?.toFormat('dd LLL yyyy') }}</td>
+                      <td>{{ loan.returnDate?.toFormat('dd LLL yyyy') || '-' }}</td>
+                      <td>
+                        <a
+                          href="{{ route('loans.edit', { id: loan.id }) }}"
+                          class="btn btn-sm btn-outline-warning"
+                          title="Edit Peminjaman"
+                        >
+                          <i class="bi bi-pencil-square"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  @endeach
+                </tbody>
+              </table>
+            </div>
+          @endif
+        </div>
+      </div>
+    </div>
+  </div>
+@endslot
+@end

@@ -70,6 +70,12 @@
                 href="{{ route('books.index') }}"
               >Daftar Buku</a>
             </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {{ request.ctx.route.name.startsWith('books') ? 'active' : '' }}"
+                href="{{ route('loans.index') }}"
+              >Daftar Pinjaman</a>
+            </li>
           </ul>
 
           <div class="d-flex">

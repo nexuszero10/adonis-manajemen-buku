@@ -10,10 +10,11 @@
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 
-// Controllers (lazy import)
+// Controllers
 const AuthController = () => import('#controllers/auth_controller')
 const BooksController = () => import('#controllers/books_controller')
 const LoansController = () => import('#controllers/loans_controller')
+const DashboardController = () => import('#controllers/dashboard_controller')
 
 // Root: Redirect ke dashboard jika login, jika tidak ke login
 router.get('/', async ({ auth, response }) => {
@@ -39,8 +40,18 @@ router
 router
   .group(() => {
     router.post('/logout', [AuthController, 'logout']).as('logout')
-    router.get('/dashboard', async ({ view }) => view.render('dashboard')).as('dashboard')
+    router.get('/dashboard', [DashboardController, 'index']).as('dashboard')
   })
+  .middleware(middleware.auth())
+
+// route user/members
+router
+  .group(() => {
+    router.get('/edit', [DashboardController, 'edit']).as('edit')
+    router.post('/edit', [DashboardController, 'update']).as('update')
+  })
+  .prefix('/users')
+  .as('users')
   .middleware(middleware.auth())
 
 // CRUD Buku (books)
@@ -61,8 +72,11 @@ router
 // CRUD Peminjaman (loans)
 router
   .group(() => {
+    router.get('/pinjam', [LoansController, 'index']).as('index')
     router.get('/pinjam/:bookId', [LoansController, 'create']).as('create')
     router.post('/pinjam/:bookId', [LoansController, 'store']).as('store')
+    router.get('/pinjam/edit/:id', [LoansController, 'edit']).as('edit')
+    router.post('/pinjam/edit/:id', [LoansController, 'update']).as('update')
   })
   .prefix('/loans')
   .as('loans')

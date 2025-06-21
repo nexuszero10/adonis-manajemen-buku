@@ -1,0 +1,47 @@
+@layout.app({ title: 'Edit Profil' })
+
+  @slot('content')
+    <div class="max-w-xl mx-auto bg-white p-4 p-md-5 rounded shadow space-y-4">
+      <h2 class="text-2xl fw-bold text-dark">
+        👤 Edit Profil
+      </h2>
+      
+      {{-- Form edit profil --}}
+      <form method="POST" action="{{ route('users.update') }}">
+        {{ csrfField() }}
+        {{-- Nama --}}
+        <div class="mb-3">
+          <label class="form-label">Nama</label>
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            value="{{ flashMessages.get('old.name', user.name) }}"
+          />
+        </div>
+
+        {{-- Alamat --}}
+        <div class="mb-3">
+          <label class="form-label">Alamat</label>
+          <textarea name="address" class="form-control">{{ flashMessages.get('old.address', user.address || '') }}</textarea>
+        </div>
+
+        {{-- Nomor HP --}}
+        <div class="mb-3">
+          <label class="form-label">Nomor HP</label>
+          <input
+            type="text"
+            name="phone"
+            class="form-control"
+            value="{{ flashMessages.get('old.phone', user.phone || '') }}"
+          />
+        </div>
+
+        {{-- Tombol Simpan --}}
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-warning">💾 Simpan Perubahan</button>
+        </div>
+      </form>
+    </div>
+  @endslot
+@end
